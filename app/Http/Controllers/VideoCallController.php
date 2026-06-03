@@ -56,6 +56,8 @@ class VideoCallController extends Controller
             ]),
         ];
 
+        Log::info('Generating LiveKit token', ['payload' => $payload]);
+        Log::info('LiveKit API Secret', ['api_secret' => $apiSecret]);
         $token = JWT::encode($payload, $apiSecret, 'HS256');
 
         return Response::json([
